@@ -1,0 +1,38 @@
+== ISI FORM MOODLE PLUGIN DIRECTORY (copy-paste satu-satu) ==
+
+Repository URL (Git): https://github.com/gas-cloud/moodle
+
+Repository branch: main
+
+Repository tag: v1.0.0
+
+Issue/bug tracker URL: https://github.com/gas-cloud/moodle/issues
+
+Plugin name: Exam Override Web Service
+
+
+== DESCRIPTION (copy-paste ke kolom Description) ==
+
+Exam Override Web Service exposes quiz group override management via Moodle's Web Services API (REST). Moodle core provides no built-in web service for creating, reading, or deleting quiz group overrides — this plugin fills that gap.
+
+THREE FUNCTIONS:
+• create_group_override — Create or update (upsert) a group override. Supports timeopen, timeclose, timelimit, password, and attempts fields. If an override already exists for the same quiz+group, it updates instead of duplicating.
+• delete_group_override — Delete an existing group override by quiz+group ID.
+• get_group_overrides — Read all group overrides for a given quiz, including group names and all override fields.
+
+SECURITY:
+All functions validate context and require the standard mod/quiz:manageoverrides capability. Group membership is validated against the quiz's course. No custom capabilities are introduced.
+
+USE CASES:
+• External exam supervision/proctoring systems that need to control quiz timing per room/session
+• Automated creation of makeup/remedial exam windows with different schedules
+• Batch scheduling tools that manage overrides across many courses from a central admin interface
+• Any LTI or external tool integration that needs programmatic quiz timing control
+
+REQUIREMENTS:
+• Moodle 3.11 or later
+• Token user must have mod/quiz:manageoverrides capability
+
+This plugin does NOT create calendar events (by design, for compatibility across Moodle versions).
+
+Developed for the exam supervision system at Universitas Muhammadiyah Malang (UMM), Indonesia.
